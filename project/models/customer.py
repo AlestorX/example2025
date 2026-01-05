@@ -1,5 +1,5 @@
 import csv
-from models.person import Person
+from person import Person
 
 fileName = "customers.csv"
 
@@ -64,7 +64,7 @@ def customerMenu():
 def addCustomer(customers):
     try:
         name = input("Name: ").strip()
-        age = int(input("Age: ")).strip()
+        age = int(input("Age: ").strip())
         email = input("Email: ").strip()
 
         if age < 0:
