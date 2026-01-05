@@ -15,26 +15,6 @@ class Artist:
 
 
 
-def add_artist(artists):
-    name = input("Artist name: ").strip()
-    genre = input("Genre: ").strip()
-
-    if name == "" or genre == "":
-        print("Name and genre cannot be empty. ")
-        return
-    
-    for a in artists:
-        if a.name.lower() == name.lower():
-            print("This artist already exists.")
-            return
-        
-        artists.append(Artist(name, genre))
-        print("Artist added!")
-
-
-
-
-
 def list_artists(artists):
     if len(artists) == 0:
         print ("No artists yet.")
@@ -49,20 +29,24 @@ def list_artists(artists):
 
 
 def artist_menu():
-    artists = []
+    artists = [
+        Artist("Shakira", "pop"),
+        Artist("The Weeknd", "R&B"),
+        Artist("Rihanna", "pop")
+    ]
+
+
     
 
     while True:
         print("\n=== Artists Menu ===")
-        print("1) Add Artist")
-        print("2) List artists")
+        print("1) List artists")
         print("0) Exit")
 
-        choice = input("Choice ")
+        choice = input("Choice ").strip()
+
 
         if choice == "1":
-            add_artist(artists)
-        elif choice == "2":
             list_artists(artists)
         elif choice == "0":
             print("Bye!")
