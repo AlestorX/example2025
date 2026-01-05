@@ -31,7 +31,11 @@ def add_artist(artists):
         artists.append(Artist(name, genre))
         print("Artist added!")
 
-def list_artist(artists):
+
+
+
+
+def list_artists(artists):
     if len(artists) == 0:
         print ("No artists yet.")
         return
@@ -44,12 +48,25 @@ def list_artist(artists):
 
 
 def artist_menu():
-    artists = load_artists()
+    artists = []
     
+
     while True:
         print("\n=== Artists Menu ===")
         print("1) Add Artist")
         print("2) List artists")
-        print("3) Save")
-        print ("4) Load")
         print("0) Exit")
+
+        choice = input("Choice ")
+
+        if choice == "1":
+            add_artist(artists)
+        elif choice == "2":
+            list_artists(artists)
+        elif choice == "0":
+            print("Bye!")
+            return artists
+        else:
+            print("Invalid choice.")
+
+
