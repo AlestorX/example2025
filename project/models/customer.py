@@ -2,6 +2,7 @@ import csv
 from models.person import Person
 
 fileName = "customers.csv"
+
 class Customer(Person):
     def __init__(self, name, age, email, customerId):
         super().__init__(name)
@@ -14,4 +15,17 @@ class Customer(Person):
         print(f"Name: {self.name}")
         print(f"Age: {self.age}")
         print(f"Email: {self.email}")
-        
+
+def loadCustomers():
+    customers = []
+    try:
+        with open(fileName, newline="") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                customerId, name, age, email = row
+                customers.append(
+                    Customer(name, int(age), email, customerId)
+                )
+    except FileNotFoundError:
+        pass
+    return customers
