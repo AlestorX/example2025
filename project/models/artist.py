@@ -37,3 +37,13 @@ def list_artist(artists):
     for a in artists:
         a.show()
 
+def artist_menu():
+    artists = load_artists()
+    
+    while True:
+        print("\n=== Artists Menu ===")
+        print("1) Add Artist")
+        print("2) List artists")
+        print("3) Save")
+        print ("4) Load")
+        print("0) Exit")
