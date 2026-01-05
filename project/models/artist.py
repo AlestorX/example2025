@@ -27,3 +27,13 @@ def add_artist(artists):
         
         artists.append(Artist(name, genre))
         print("Artist added!")
+
+def list_artist(artists):
+    if len(artists) == 0:
+        print ("No artists yet.")
+        return
+    
+    print("Artists:")
+    for a in artists:
+        a.show()
+
