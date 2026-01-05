@@ -29,3 +29,13 @@ def loadCustomers():
     except FileNotFoundError:
         pass
     return customers
+
+def saveCustomer(customer):
+    with open(fileName, "a", newline="") as file:
+        write = csv.writer(file)
+        write.writerow([
+            customer.customerId,
+            customer.name,
+            customer.age,
+            customer.email
+        ])
