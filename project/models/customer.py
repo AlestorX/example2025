@@ -92,6 +92,7 @@ def listCustomer(customers):
     for c in customers:
         c.showInfo()
         print("-" * 20)
-        
 
+if __name__ == "__main__":
+    customerMenu()
 
