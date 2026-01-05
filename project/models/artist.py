@@ -16,8 +16,8 @@ class Artist:
 
 
 def add_artist(artists):
-    name = input("Artist name: 1")
-    genre = input("Genre: ")
+    name = input("Artist name: ").strip()
+    genre = input("Genre: ").strip()
 
     if name == "" or genre == "":
         print("Name and genre cannot be empty. ")
@@ -25,7 +25,7 @@ def add_artist(artists):
     
     for a in artists:
         if a.name.lower() == name.lower():
-            print("this artist already exists.")
+            print("This artist already exists.")
             return
         
         artists.append(Artist(name, genre))
