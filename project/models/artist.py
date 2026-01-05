@@ -19,3 +19,8 @@ def add_artist(artists):
     if name == "" or genre == "":
         print("Name and genre cannot be empty. ")
         return
+    
+    for a in artists:
+        if a.name.lower() == name.lower():
+            print("this artist already exists.")
+            return
