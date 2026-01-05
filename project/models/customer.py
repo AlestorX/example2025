@@ -1,4 +1,4 @@
+import csv
 from models.person import Person
 
-class Customer(Person):
-    pass
+fileName = "customers.csv"
