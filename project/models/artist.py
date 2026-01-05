@@ -16,7 +16,7 @@ class Artist:
 
 
 def add_artist(artists):
-    name = input("Artist name")
+    name = input("Artist name: 1")
     genre = input("Genre: ")
 
     if name == "" or genre == "":
@@ -47,6 +47,7 @@ def list_artists(artists):
 
 
 
+
 def artist_menu():
     artists = []
     
@@ -70,3 +71,8 @@ def artist_menu():
             print("Invalid choice.")
 
 
+
+
+
+if __name__ == "__main__":
+    artist_menu()
