@@ -12,6 +12,9 @@ class Artist:
         print(f"- {self.name} ({self.genre})")
 
 
+
+
+
 def add_artist(artists):
     name = input("Artist name")
     genre = input("Genre: ")
@@ -36,6 +39,9 @@ def list_artist(artists):
     print("Artists:")
     for a in artists:
         a.show()
+
+
+
 
 def artist_menu():
     artists = load_artists()
