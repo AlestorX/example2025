@@ -1,4 +1,12 @@
-from models.person import Person
+import csv
 
-class Artist(Person):
-    pass
+FILE_NAME = "artists.csv"
+
+
+class Artist: 
+    def __init__(self, name, genre):
+        self.name = name
+        self.genre = genre
+
+    def show(self):
+        print(f"- {self.name} ({self.genre})")
