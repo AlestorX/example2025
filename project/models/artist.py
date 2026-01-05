@@ -24,3 +24,6 @@ def add_artist(artists):
         if a.name.lower() == name.lower():
             print("this artist already exists.")
             return
+        
+        artists.append(Artist(name, genre))
+        print("Artist added!")
