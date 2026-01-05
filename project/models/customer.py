@@ -39,3 +39,26 @@ def saveCustomer(customer):
             customer.age,
             customer.email
         ])
+
+def customerMenu():
+    customers = loadCustomers()
+    
+    while True:
+        print("\n=== Customer Menu ===")
+        print("1. Add New Customer")
+        print("2. List Customers")
+        print("0. Exit")
+
+        choice = input("Choice (write down number) ").strip()
+
+        if choice == "1":
+            addCustomers(customers)
+        elif choice == "2":
+            listCustomers(customers)
+        elif choice == "0":
+            print("Bye!")
+            return customers
+        else:
+            print("Invalid Choice.")
+            
+
