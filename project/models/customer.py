@@ -49,16 +49,39 @@ def customerMenu():
         print("2. List Customers")
         print("0. Exit")
 
-        choice = input("Choice (write down number) ").strip()
+        choice = input("Choice (write down number): ").strip()
 
         if choice == "1":
-            addCustomers(customers)
+            addCustomer(customers)
         elif choice == "2":
-            listCustomers(customers)
+            listCustomer(customers)
         elif choice == "0":
             print("Bye!")
             return customers
         else:
             print("Invalid Choice.")
-            
+
+def addCustomer(customers):
+    try:
+        name = input("Name: ").strip()
+        age = int(input("Age: ")).strip()
+        email = input("Email: ").strip()
+
+        if age < 0:
+            print("Invlid Age.")
+            return
+        
+        customerId = f"c{len(customers) + 1}"
+
+        customer = Customer(name, age, email, customerId)
+        customers.append(customer)
+        saveCustomer(customer)
+
+        print("Customer has been added.")
+
+    except ValueError:
+        print("Age must be a number.")
+
+        
+
 
