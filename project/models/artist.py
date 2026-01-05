@@ -16,4 +16,6 @@ def add_artist(artists):
     name = input("Artist name")
     genre = input("Genre: ")
 
-    
+    if name == "" or genre == "":
+        print("Name and genre cannot be empty. ")
+        return
