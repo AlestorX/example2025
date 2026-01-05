@@ -10,3 +10,10 @@ class Artist:
 
     def show(self):
         print(f"- {self.name} ({self.genre})")
+
+
+def add_artist(artists):
+    name = input("Artist name")
+    genre = input("Genre: ")
+
+    
