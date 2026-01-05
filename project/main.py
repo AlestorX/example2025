@@ -1,8 +1,11 @@
-from models.customer import Customer
-from models.artist import Artist
+from models.artist import artist_menu
 
-c = Customer("Test Customer")
-a = Artist("Test Artist")
 
-c.show_info()
-a.show_info()
+def main():
+    artists = artist_menu()
+    print("\nArtists received in main.py")
+    for a in artists:
+        a.show()
+
+if __name__ == "__main__":
+    main()
