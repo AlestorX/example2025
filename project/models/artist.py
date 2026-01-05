@@ -60,3 +60,7 @@ def artist_menu():
 
 if __name__ == "__main__":
     artist_menu()
+
+
+
+    
