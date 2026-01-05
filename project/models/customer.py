@@ -82,6 +82,16 @@ def addCustomer(customers):
     except ValueError:
         print("Age must be a number.")
 
+
+def listCustomer(customers):
+    if len(customers) == 0:
+        print("No customers yet.")
+        return
+    
+    print("\nCustomers:")
+    for c in customers:
+        c.showInfo()
+        print("-" * 20)
         
 
 
