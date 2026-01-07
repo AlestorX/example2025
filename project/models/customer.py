@@ -1,5 +1,5 @@
 import csv
-from person import Person
+from models.person import Person
 
 fileName = "customers.csv"
 
@@ -93,6 +93,4 @@ def listCustomer(customers):
         c.showInfo()
         print("-" * 20)
 
-if __name__ == "__main__":
-    customerMenu()
 

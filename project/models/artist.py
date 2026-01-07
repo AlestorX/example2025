@@ -1,3 +1,6 @@
+from models.person import Person
+
+
 import csv
 
 FILE_NAME = "artists.csv"
@@ -58,6 +61,3 @@ def artist_menu():
 
 
 
-
-if __name__ == "__main__":
-    artist_menu()
