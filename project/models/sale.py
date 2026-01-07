@@ -1,10 +1,12 @@
 import csv
+from ticket import Ticket
+from customer import Customer 
 
 fileName = "sales.csv"
 
 class Sales:
     def __init__(self, event, customer, ticket):
-        self.evet = event
+        self.event= event
         self.customer = customer
         self.ticket = ticket
 
