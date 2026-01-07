@@ -3,7 +3,7 @@ import csv
 fileName = "tickets.csv"
 
 class Ticket:
-    def __init__(self, ticketId, ticketType, price, available=True)
+    def __init__(self, ticketId, ticketType, price, available=True):
         self.ticketId = ticketId
         self.ticketType = ticketType
         self.price = price
@@ -45,3 +45,12 @@ def saveTickets(tickets):
                 t.price,
                 t.available
             ])
+
+def listTickets(tickets):
+    if len(tickets) == 0:
+        print("No tickets")
+        return
+    
+    for t in tickets:
+        t.showInfo()
+        print("-" * 20)
