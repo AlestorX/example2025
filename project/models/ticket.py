@@ -1,5 +1,7 @@
 import csv
 
+fileName = "tickets.csv"
+
 class Ticket:
     def __init__(self, ticketId, ticketType, price, available=True)
         self.ticketId = ticketId
@@ -14,5 +16,21 @@ class Ticket:
         print(f"Price: {self.price}")
         print(f"Status: {status}")
 
-
-
+def loadTickets():
+    tickets = []
+    try:
+        with open(fileName, newline="") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                ticketId, ticketType, price, available = row
+                tickets.append(
+                    Ticket(
+                        ticketId,
+                        ticketType,
+                        float(price),
+                        available == "True"
+                    )
+                )
+    except FileNotFoundError:
+        pass
+    return tickets
