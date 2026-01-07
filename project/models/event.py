@@ -8,4 +8,12 @@ class Event:
         self.date = date
         self.start_time = start_time
 
-        
+        self.artists = artists 
+
+        def show_event(self):
+            print("\n=== Event Info ===")
+            print("Event:", self.event_name)
+            print("Date:", self.date)
+            print("Time:", self.start_time, "-", self.end_time)
+
+            
