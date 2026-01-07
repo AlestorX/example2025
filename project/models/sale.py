@@ -1,14 +1,16 @@
 import csv
 from ticket import Ticket
 from customer import Customer 
+from event import Event
 
 fileName = "sales.csv"
 
 class Sales:
-    def __init__(self, event, customer, ticket):
-        self.event= event
+    def __init__(self, salesId, customer, ticket, event_name):
+        self.salesId = salesId
         self.customer = customer
         self.ticket = ticket
+        self.event_name = event_name
 
     def makePurchase(self):
         if not self.ticket.available:
@@ -16,17 +18,19 @@ class Sales:
             return False
         
         self.ticket.available = False
-        self.saveToFile()
-
+        self.saveSale()
         print("Purchase successful.")
         return True
     
-def saveToFile(self):
+def saveSale(self):
     with open(fileName, "a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow([
+            self.saleId,
+            self.customer.customerId,
+            self.customer.name,
             self.event.event_name,
-            self.customer.customerID,
+            self.ticket.ticketId,
             self.ticket.ticketType,
             self.ticket.price
         ])
