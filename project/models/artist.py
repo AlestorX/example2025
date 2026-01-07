@@ -47,8 +47,7 @@ def artist_menu():
 
 
         if choice == "1":
-            list_artists(artists)
-            return artists 
+            list_artists(artists) 
         elif choice == "0":
             print("Bye!")
             return artists
