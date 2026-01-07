@@ -3,7 +3,7 @@ import csv
 fileName = "tickets.csv"
 
 class Ticket:
-    def __init__(self, ticketId, ticketType, price, available=True)
+    def __init__(self, ticketId, ticketType, price, available=True):
         self.ticketId = ticketId
         self.ticketType = ticketType
         self.price = price
