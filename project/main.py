@@ -5,4 +5,3 @@ def main():
     while True:
         print("\n=== MAIN MENU ===")
         print("1)")
-    
