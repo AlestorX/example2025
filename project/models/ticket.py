@@ -34,3 +34,14 @@ def loadTickets():
     except FileNotFoundError:
         pass
     return tickets
+
+def saveTickets(tickets):
+    with open(fileName, "w", newline="") as file:
+        writer = csv.writer(file)
+        for t in tickets:
+            writer.writerow([
+                t.ticketId,
+                t.ticketType,
+                t.price,
+                t.available
+            ])
