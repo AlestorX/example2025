@@ -19,3 +19,12 @@ class Sales:
         print("Purchase successful.")
         return True
     
+def saveToFile(self):
+    with open(fileName, "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([
+            self.event.event_name,
+            self.customer.customerID,
+            self.ticket.ticketType,
+            self.ticket.price
+        ])
