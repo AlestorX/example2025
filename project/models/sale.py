@@ -34,3 +34,4 @@ def saveSale(self):
             self.ticket.ticketType,
             self.ticket.price
         ])
+        
