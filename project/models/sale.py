@@ -7,7 +7,8 @@ from models.event import Event
 fileName = "sales.csv"
 
 class Sale:
-    def __init__(self, event, customer, ticket):
+    def __init__(self, salesId, event, customer, ticket):
+        self.salesId = salesId
         self.event = event
         self.customer = customer
         self.ticket = ticket
@@ -30,3 +31,22 @@ class Sale:
         except Exception as e:
             print(f"An error occurred during purchase: {e}")
             return False
+        
+    def save_sale(self):
+
+        #save sale information to csv file
+
+        try:
+            with open(fileName, "a", newline="") as file:
+                writer = csv.writer(file)
+                writer.writerow([
+                    self.salesId,
+                    self.event.eventId,
+                    self.customer.customerId,
+                    self.ticket.ticketId,
+                    self.purchase
+                ])
+
+        except Exception as e:
+            print(f"Erorror can not save sale information:{e}")
+            
