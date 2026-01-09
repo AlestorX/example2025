@@ -13,4 +13,20 @@ class Sale:
         self.ticket = ticket
         self.purchase = False #Purchase status
 
-    
+    def make_purchase(self):
+        try:
+            if not self.ticket.available:
+                print("Tickets are sold out for this event.")
+                return False
+            
+            # change ticket status 
+            self.ticket.available = False
+            self.purchase = True
+
+            self.save_sale()
+            print("Purchase successful!")
+            return True
+        
+        except Exception as e:
+            print(f"An error occurred during purchase: {e}")
+            return False
