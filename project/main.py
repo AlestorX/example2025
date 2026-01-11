@@ -1,5 +1,6 @@
 from models.artist import artist_menu
 from models.event import Event
+from models.customer import customerMenu
 
 def main():
     while True:
@@ -13,7 +14,7 @@ def main():
         if choice =="1":
             artist_menu()
         elif choice =="2":
-            customer_menu()
+            customerMenu()
         elif choice == "0":
             print("Bye!")
             break
@@ -23,4 +24,3 @@ def main():
 if __name__=="__main__":
     main()
 
-    
