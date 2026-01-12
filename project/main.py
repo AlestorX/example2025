@@ -24,6 +24,8 @@ def main():
             customerMenu()
         elif choice =="3":
             ticket_menu()
+        elif choice =="4":
+            sale_menu()   
         elif choice == "0":
             print("Bye!")
             break
