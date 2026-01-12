@@ -1,6 +1,9 @@
 from models.artist import artist_menu
 from models.event import Event
 from models.customer import customerMenu
+from models.ticket import Ticket
+from models.sale import Sale
+
 
 def main():
     while True:
