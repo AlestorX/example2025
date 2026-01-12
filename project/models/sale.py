@@ -49,3 +49,19 @@ class Sale:
 
         except Exception as e:
             print(f"Erorror can not save sale information:{e}")
+ 
+
+def sales_menu():
+    while True:
+        print("\n=== SALES MENU ===")
+        print("1) Make purchase")
+        print("0) Back")
+
+        choice = input("Choice: ").strip()
+
+        if choice == "1":
+            print("Purchasing in progress...")
+        elif choice == "0":
+            return
+        else:
+            print("Invalid choice.")
