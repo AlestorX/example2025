@@ -8,9 +8,13 @@ from models.sale import Sale
 def main():
     while True:
         print("\n=== MAIN MENU ===")
+        print("1)")
     
         print("1) Artists")
         print("2) Customers")
+        print("3) Ticket")
+        print("4) Sales")
+        print("5) Events")
         print("0) Exit")
 
         choice = input("Choice: ").strip()
