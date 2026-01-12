@@ -1,6 +1,6 @@
 import csv
 
-from models.ticket import Ticket
+
 from models.customer import Customer
 from models.event import Event
 
@@ -50,3 +50,17 @@ class Sale:
         except Exception as e:
             print(f"Erorror can not save sale information:{e}")
             
+
+def sales_menu():
+    print("\n=== Sales Menu ===")
+    print("1) Make purchase")
+    print("0) Back")
+
+    choice = input("Choice: ").strip()
+
+    if choice == "1":
+        print("Purchase logic will run here.")
+    elif choice == "0":
+        return
+    else:
+        print("Invalid choice.")

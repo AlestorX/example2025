@@ -2,7 +2,7 @@ from models.artist import artist_menu
 from models.event import Event
 from models.customer import customerMenu
 from models.ticket import listTickets
-from models.sale import make_purchase
+from models.sale import sales_menu
 
 
 def main():
@@ -25,7 +25,7 @@ def main():
         elif choice =="3":
             listTickets()
         elif choice =="4":
-            make_purchase()   
+            sales_menu()   
         elif choice == "0":
             print("Bye!")
             break
