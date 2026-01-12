@@ -1,5 +1,9 @@
 import csv
 
+from models.sale import Sale
+from models.event import Event
+from models.customer import Customer
+
 fileName = "tickets.csv"
 
 class Ticket:
