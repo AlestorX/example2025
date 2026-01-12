@@ -1,8 +1,8 @@
 import csv
 
 
-from models.event import Event
-from models.customer import Customer
+from .event import Event
+from .customer import Customer
 
 fileName = "tickets.csv"
 
@@ -50,11 +50,14 @@ def saveTickets(tickets):
                 t.available
             ])
 
-def listTickets(tickets):
+tickets = loadTickets()
+
+def listTickets():
     if len(tickets) == 0:
         print("No tickets")
         return
-    
+
     for t in tickets:
         t.showInfo()
         print("-" * 20)
+
