@@ -12,7 +12,7 @@ class Sale:
         self.event = event
         self.customer = customer
         self.ticket = ticket
-        self.purchase = False #Purchase status
+        self.purchase = False 
 
     def make_purchase(self):
         try:
@@ -34,7 +34,7 @@ class Sale:
         
     def save_sale(self):
 
-        #save sale information to csv file
+    
 
         try:
             with open(fileName, "a", newline="") as file:
