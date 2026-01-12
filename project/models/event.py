@@ -20,3 +20,17 @@ class Event:
             print("Artists:")
             for a in self.artists:
                 a.show()
+
+def event_menu():
+    print("\n=== Event Menu ===")
+    print("1) Show event info")
+    print("0) Back")
+
+    choice = input("Choice: ").strip()
+
+    if choice == "1":
+        print("Event logic will run here.")
+    elif choice == "0":
+        return
+    else:
+        print("Invalid choice.")

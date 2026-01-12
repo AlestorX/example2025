@@ -6,13 +6,16 @@ from models.sale import sales_menu
 
 
 def main():
+
+    artists = []
+
     while True:
         print("\n=== MAIN MENU ===")
     
         print("1) Artists")
         print("2) Customers")
-        print("3) Ticket")
-        print("4) Sales")
+        print("3) Sales")
+        print("4) Ticket")
         print("5) Events")
         print("0) Exit")
 
@@ -27,10 +30,8 @@ def main():
         elif choice =="4":
             sales_menu()   
         elif choice =="5":
-            Event.event_menu()
-        elif choice == "0":
-            print("Bye!")
-            break
+            event1 = Event("Summer Music Festival", "18.05.2026", "18:00", "00:00", artists)
+            event1.show_event()
         else:
             print("Invalid choice.")
 
