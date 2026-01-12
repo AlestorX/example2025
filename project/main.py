@@ -5,7 +5,6 @@ from models.customer import customerMenu
 def main():
     while True:
         print("\n=== MAIN MENU ===")
-        print("1)")
     
         print("1) Artists")
         print("2) Customers")
