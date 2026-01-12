@@ -3,7 +3,7 @@ from models.person import Person
 
 
 
-FILE_NAME = "artists.csv"
+
 
 
 class Artist: 
