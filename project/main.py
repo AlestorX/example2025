@@ -28,7 +28,7 @@ def main():
             listTickets()
         elif choice =="4":
             sales_menu()   
-            Sale()
+            sales_menu()
         elif choice =="5":
             Event.event_menu()
         elif choice == "0":
