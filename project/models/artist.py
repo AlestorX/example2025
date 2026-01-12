@@ -1,7 +1,7 @@
 from models.person import Person
 
 
-import csv
+
 
 FILE_NAME = "artists.csv"
 

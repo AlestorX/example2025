@@ -5,10 +5,8 @@ from models.customer import customerMenu
 def main():
     while True:
         print("\n=== MAIN MENU ===")
-<<<<<<< HEAD
         print("1)")
     
-=======
         print("1) Artists")
         print("2) Customers")
         print("0) Exit")
@@ -28,4 +26,3 @@ def main():
 if __name__=="__main__":
     main()
 
->>>>>>> e66206d332c9fd8bcc3484f813a35dbf42c14cde
