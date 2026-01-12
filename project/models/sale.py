@@ -50,3 +50,17 @@ class Sale:
         except Exception as e:
             print(f"Erorror can not save sale information:{e}")
             
+def sale_menu()
+    print("\n=== SALE MENU ===")
+    print("1) Make a Purchase")
+    print("0) Return to Main Menu")
+
+    choice = input("Choice: ").strip()
+
+    if choice == "1":
+        print("Making a purchase...") # add event\customer\ticket
+    elif choice == "0":
+        return
+    else:
+        print("Invalid choice.")
+    
