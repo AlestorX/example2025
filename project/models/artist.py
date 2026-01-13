@@ -19,7 +19,7 @@ def load_artists():
      if not os.path.exists(ARTISTS_FILE):
          return [
              Artist("Shakira", "pop"),
-             Artist("the weeknd", "R&B"),
+             Artist("The weeknd", "R&B"),
              Artist("Rihanna", "pop")
          ]
      
@@ -31,7 +31,9 @@ def load_artists():
                  continue
              name = row[0].strip()
              genre = row[1].strip()
-             artists.append (Artist(name, genre))
+             #Skip empty/bad data 
+             if name == "" or genre == "":
+                  artists.append (Artist(name, genre))
 
      return artists 
 
@@ -43,15 +45,19 @@ def list_artists(artists):
         return
     
     # Sort by genre first, then name
-    artists_sorted = sorted(artists, key=lambda a: (a.genre.lower(), a.name.lower()))
+    artists_sorted = sorted(artists, key=lambda a: (a.genre.strip().lower(), a.name.strip().lower()))
 
     print("\nArtists (grouped by genre )")
     
     current_genre = None
     for a in artists_sorted:
+        genre_clean = a.genre.strip().lower()
+        name_clean = a.name.strip()
+
+
         # Print a header when genre changes
-        if a.genre !=current_genre:
-         current_genre = a.genre
+        if genre_clean !=current_genre:
+         current_genre = genre_clean
         print (f"\n{current_genre.upper()}:")
     print (f"- {a.name}")
 
