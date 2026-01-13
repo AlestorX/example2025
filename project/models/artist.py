@@ -43,15 +43,15 @@ def list_artists(artists):
         return
     
     # Sort by genre first, then name
-    artists_sorted = sorted(artists, key=lambda a: (a.genre.lower(), a.name.lowe()))
+    artists_sorted = sorted(artists, key=lambda a: (a.genre.lower(), a.name.lower()))
 
     print("\nArtists (grouped by genre )")
-
-current_genre = None
-for a in artists_sorted:
-    # Print a header when genre changes
-    if a.genre !=current_genre:
-        current_genre = a.genre
+    
+    current_genre = None
+    for a in artists_sorted:
+        # Print a header when genre changes
+        if a.genre !=current_genre:
+         current_genre = a.genre
         print (f"\n{current_genre.upper()}:")
     print (f"- {a.name}")
 
