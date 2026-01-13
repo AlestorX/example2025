@@ -2,10 +2,6 @@ from models.person import Person
 
 
 
-
-
-
-
 class Artist: 
     def __init__(self, name, genre):
         self.name = name
@@ -13,10 +9,6 @@ class Artist:
 
     def show(self):
         print(f"- {self.name} ({self.genre})")
-
-
-
-
 
 def list_artists(artists):
     if len(artists) == 0:
@@ -27,10 +19,6 @@ def list_artists(artists):
     for a in artists:
         a.show()
 
-
-
-
-
 def artist_menu():
     artists = [
         Artist("Shakira", "pop"),
@@ -38,16 +26,12 @@ def artist_menu():
         Artist("Rihanna", "pop")
     ]
 
-
-    
-
     while True:
         print("\n=== Artists Menu ===")
         print("1) List artists")
         print("0) Exit")
 
         choice = input("Choice ").strip()
-
 
         if choice == "1":
             list_artists(artists) 
