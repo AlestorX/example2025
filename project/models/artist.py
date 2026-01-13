@@ -16,7 +16,7 @@ ARTISTS_FILE = "data/artists.csv"
 
 def load_artists():
      # If file doesn't exist, return default artists
-     if not os.path.excits(ARTISTS_FILE):
+     if not os.path.exists(ARTISTS_FILE):
          return [
              Artist("Shakira", "pop"),
              Artist("the weeknd", "R&B"),
@@ -42,28 +42,34 @@ def list_artists(artists):
         print ("No artists yet.")
         return
     
-    print("Artists:")
-    for a in artists:
-        a.show()
+    # Sort by genre first, then name
+    artists_sorted = sorted(artists, key=lambda a: (a.genre.lower(), a.name.lowe()))
+
+    print("\nArtists (grouped by genre )")
+
+current_genre = None
+for a in artists_sorted:
+    # Print a header when genre changes
+    if a.genre !=current_genre:
+        current_genre = a.genre
+        print (f"\n{current_genre.upper()}:")
+    print (f"- {a.name}")
+
 
 def artist_menu():
-    artists = [
-        Artist("Shakira", "pop"),
-        Artist("The Weeknd", "R&B"),
-        Artist("Rihanna", "pop")
-    ]
+    artists =  load_artists()
 
     while True:
         print("\n=== Artists Menu ===")
         print("1) List artists")
-        print("0) Exit")
+        print("0) Back")
 
         choice = input("Choice ").strip()
 
         if choice == "1":
             list_artists(artists) 
         elif choice == "0":
-            print("Bye!")
+            print("Back to main menu... ")
             return artists
         else:
             print("Invalid choice.")
