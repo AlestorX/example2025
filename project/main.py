@@ -3,11 +3,13 @@ from models.event import Event
 from models.customer import customerMenu
 from models.ticket import listTickets
 from models.sale import sales_menu
+from models.artist import load_artists
 
 
 def main():
 
     artists = []
+    artists = load_artists()
 
     while True:
         print("\n=== MAIN MENU ===")

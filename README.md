@@ -1,1 +1,1 @@
-# example2025
+print("Hellow world")

@@ -18,11 +18,11 @@ def load_artists():
      # If file doesn't exist, return default artists
      if not os.path.exists(ARTISTS_FILE):
          return [
-             Artist("Shakira", "pop"),
-             Artist("The weeknd", "R&B"),
-             Artist("Rihanna", "pop")
-         ]
-     
+             Artist("The Rolling Stones", "Rock"),
+             Artist("Beyoncé", "Pop"),
+             Artist("Miles Davis", "Jazz"),
+             Artist("Ludwig van Beethoven", "Classical")
+             ]
      artists = []
      with open (ARTISTS_FILE, "r", newline="", encoding="utf-8") as f:
          reader = csv.reader(f)
@@ -57,9 +57,9 @@ def list_artists(artists):
 
         # Print a header when genre changes
         if genre_clean !=current_genre:
-         current_genre = genre_clean
+            current_genre = genre_clean
         print (f"\n{current_genre.upper()}:")
-    print (f"- {a.name}")
+        print (f"- {a.name}")
 
 
 def artist_menu():
