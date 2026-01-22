@@ -19,7 +19,7 @@ class Customer(Person):
         print(f"Age: {self.age}")
         print(f"Email: {self.email}")
 
-
+# Load customers from file
 def loadCustomers():
     customers = []
     try:
@@ -31,10 +31,10 @@ def loadCustomers():
                 customerId, name, age, email = row
                 customers.append(Customer(name, int(age), email, customerId))
     except FileNotFoundError:
-        print("File not found. Starting with empty data.")
-        return []
+        print("Customer file not found. Starting with empty data.")
+    return customers
 
-
+# Save a new customer to file
 def saveCustomer(customer):
     with open(customerFile, "a", newline="") as file:
         write = csv.writer(file)
@@ -45,7 +45,7 @@ def saveCustomer(customer):
             customer.email
         ])
 
-
+# Add a new customer via input
 def addCustomer(customers):
     try:
         name = input("Name: ").strip()
@@ -57,7 +57,6 @@ def addCustomer(customers):
             return
         
         customerId = f"c{len(customers) + 1}"
-
         customer = Customer(name, age, email, customerId)
         customers.append(customer)
         saveCustomer(customer)
@@ -67,18 +66,20 @@ def addCustomer(customers):
     except ValueError:
         print("Age must be a number.")
 
-
+# List all customers
 def listCustomer(customers):
     if len(customers) == 0:
         print("No customers yet.")
         return
     
+    #sort by name for better readability
+    customersSorted = sorted(customers, key=lambda c: c.name.lower())
     print("\nCustomers:")
-    for c in customers:
+    for c in customersSorted:
         c.showInfo()
-        print("-" * 20)
+        print("-" * 30)
 
-
+# Show customer purchases from sale file
 def showCustomerPurchases(customerId):
     print(f"\nPurchases for customer {customerId}:")
     found = False
@@ -91,12 +92,11 @@ def showCustomerPurchases(customerId):
                 if cId == customerId and purchase == "True":
                     print(f"Event: {eventId} | Ticket: {ticketId}")
     except FileNotFoundError:
-        print("File not found. Starting with empty data.")
-        return []
+        print("Sales file not found.")
     if not found:
         print("No purchases found.")
 
-
+# Customer menu
 def customerMenu():
     customers = loadCustomers()
     
