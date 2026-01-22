@@ -31,10 +31,18 @@ class Event:
 EVENT_FILE = "data/events.csv"
 
 
+def find_artist_by_name(artists, name):
+    name_clean = name.strip().lower()
+    for a in artists:
+        if a.name.strip().lower() == name_clean:
+            return a
+    return None
+
+
 def load_event():
     #If file doesn't exists, return some defualt events
     if not os.path.exists(EVENT_FILE):
-        defualt_artists = load_artists
+        default_artists = load_artists()
 
         #Pick some artists for the defualt events
         return [
@@ -61,7 +69,28 @@ def load_event():
             artist_names_text = row[5].strip()
 
 
+            #Skip empty/bad rows
 
+            if eventId == "" or event_name == "" or date == "":
+                continue
+
+            event_artists = []
+            if artist_names_text != "":
+                names = artist_names_text.split ("|")
+                for n in names:
+                    n = n.strip()
+                    if n == "":
+                        continue
+
+                    found = find_artist_by_name(artists, n)
+                    if found is not None:
+                        event_artists.append(found)
+                    else:
+                       # If artist is not in artists.csv, still show it as an Artist object 
+                        event_artists.append(Artist(n, "Unknown"))
+
+            events.append(Event(eventId, event_name, date, start_time, end_time, event_artists))
+    return events
 
 
 
