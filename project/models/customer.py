@@ -86,7 +86,15 @@ def showCustomerPurchases(customerId):
     try:
         with open(saveFile, newline="") as file:
             reader = csv.reader(file)
-            for row in r
+            for row in reader:
+                salesId, eventId, cId, ticketId, purchase = row
+                if cId == customerId and purchase == "True":
+                    print(f"Event: {eventId} | Ticket: {ticketId}")
+    except FileNotFoundError:
+        print("File not found. Starting with empty data.")
+        return []
+    if not found:
+        print("No purchases found.")
 
 
 def customerMenu():
