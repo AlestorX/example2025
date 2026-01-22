@@ -2,9 +2,6 @@ import os
 import csv
 
 from .artist import Artist, load_artists #we will use artists from artist.py
-from models.ticket import Ticket, tickets, saveTickets
-
-
 
 class Event:
     def __init__(self, eventId, event_name, date, start_time, end_time, artists):
@@ -93,25 +90,3 @@ def load_event():
             events.append(Event(eventId, event_name, date, start_time, end_time, event_artists))
     return events
 
-# Generate tickets for an event and save them
-def generateTickets(event, ticketType=None):
-    if ticketType is None:
-        ticketType = [
-            {"type": "VIP", "price": 100.0, "quantity": 5},
-            {"type": "General", "price": 50.0, "quantity": 10 },
-        ]
-
-    #Find the next ticket ID
-    nextId = len(tickets) + 1
-
-    for t in ticketType:
-        for i in range(t["quantity"]):
-            ticketId = f"T{nextId}"
-            newTicket = Ticket(ticketId, event.eventId, t["type"], t["price"], available=True)
-            tickets.append(newTicket)
-            nextId += 1
-    
-    # Save all tickets to CSV
-    saveTickets(tickets)
-    print(f"{len(ticketType)} ticket type generated for event {event.event_name}.")
-    
