@@ -1,10 +1,6 @@
 import csv
 
 
-from .event import Event
-from .customer import Customer
-
-
 ticketFile = "tickets.csv"
 
 
@@ -85,7 +81,22 @@ def getAvailableTickets(eventId, tickets):
     available = [t for t in tickets if t.eventId == eventId and t.available]
     return available 
 
+# Report to show data
+def ticketReport(tickets):
+    ticketByEvent = {}
+    for t in tickets:
+        ticketByEvent.setdefaul(t.eventId, []).append(t)
 
+    print("\n=== Ticket Sales Report ===")
+    for eventId, ticketList in ticketByEvent.items():
+        sold = 0
+        available = 0
+        for t in ticketList:
+            if t.available:
+                available += 1
+            else:
+                sold += 1
+        print(f"Event {eventId}: Sold = {sold} | Available = {available}")
 
 # Global tickets variable
 tickets = loadTickets()
