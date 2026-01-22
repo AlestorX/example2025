@@ -4,7 +4,9 @@ import csv
 from .event import Event
 from .customer import Customer
 
+
 ticketFile = "tickets.csv"
+
 
 class Ticket:
     def __init__(self, ticketId, eventId, ticketType, price, available=True):
@@ -15,13 +17,15 @@ class Ticket:
         self.available = available
 
     def showInfo(self):
+        """Display Ticket details"""
         status = "Available" if self.available else "Sold"
         print(f"ID: {self.ticketId}")
-        print(f"Event: {self.eventId}")
+        print(f"Event ID: {self.eventId}")
         print(f"Type: {self.ticketType}")
-        print(f"Price: {self.price}")
+        print(f"Price: £{self.price:.2f}")
         print(f"Status: {status}")
 
+# Load tickets from CSV
 def loadTickets():
     tickets = []
     try:
@@ -41,9 +45,10 @@ def loadTickets():
                     )
                 )
     except FileNotFoundError:
-        print("File not found. Starting with empty data.")
-        return []
+        print("Ticket file not found. Starting with empty data.")
+    return tickets
 
+# Save all tickets back to file
 def saveTickets(tickets):
     with open(ticketFile, "w", newline="") as file:
         writer = csv.writer(file)
@@ -56,14 +61,31 @@ def saveTickets(tickets):
                 t.available
             ])
 
-tickets = loadTickets()
-
+# List tickets with categorization
 def listTickets():
-    if len(tickets) == 0:
+    if not tickets:
         print("No tickets available.")
         return
-
+    
+    #Group tickets by event
+    ticketByEvent = {}
     for t in tickets:
-        t.showInfo()
-        print("-" * 20)
+        if t.eventId not in ticketByEvent:
+            ticketByEvent[t.enetId].append(t)
+
+    # Display tickets grouped by event
+    for eventId, ticketList in ticketByEvent.items():
+        print(f"\n=== Tickets for Event ID: {eventId} ===")
+        for t in ticketList:
+            t.showInfo()
+        print("-" * 30)
+
+# Check available tickets for a specific evet
+def getAvailableTickets(eventId, tickets):
+    """Return a list of available tickets for a given event"""
+    available = [t for t in tickets if t.eventId == eventId and t.available]
+    return available 
+
+# Global tickets variable
+tickets = loadTickets()
 
