@@ -13,7 +13,7 @@ class Ticket:
         self.ticketId = ticketId
         self.eventId = eventId
         self.ticketType = ticketType
-        self.price = price
+        self.price = float(price)
         self.available = available
 
     def showInfo(self):
@@ -70,13 +70,12 @@ def listTickets():
     #Group tickets by event
     ticketByEvent = {}
     for t in tickets:
-        if t.eventId not in ticketByEvent:
-            ticketByEvent[t.enetId].append(t)
+        ticketByEvent.setdefault(t.eventId, []).append(t)
 
     # Display tickets grouped by event
-    for eventId, ticketList in ticketByEvent.items():
+    for eventId in sorted(ticketByEvent.keys()):
         print(f"\n=== Tickets for Event ID: {eventId} ===")
-        for t in ticketList:
+        for t in sorted(ticketByEvent[eventId], key=lambda x: x.ticketType.low()):
             t.showInfo()
         print("-" * 30)
 
@@ -85,6 +84,8 @@ def getAvailableTickets(eventId, tickets):
     """Return a list of available tickets for a given event"""
     available = [t for t in tickets if t.eventId == eventId and t.available]
     return available 
+
+
 
 # Global tickets variable
 tickets = loadTickets()
