@@ -104,6 +104,7 @@ def customerMenu():
         print("\n=== Customer Menu ===")
         print("1. Add New Customer")
         print("2. List Customers")
+        print("3. Show Customer Purchases")
         print("0. Exit")
 
         choice = input("Choice (write down number): ").strip()
@@ -112,6 +113,9 @@ def customerMenu():
             addCustomer(customers)
         elif choice == "2":
             listCustomer(customers)
+        elif choice == "3":
+            cId = input("Enter Customer ID: ").stipr()
+            showCustomerPurchases(cId)
         elif choice == "0":
             print("Bye!")
             return customers
