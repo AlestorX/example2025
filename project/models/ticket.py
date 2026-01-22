@@ -57,6 +57,28 @@ def saveTickets(tickets):
                 t.available
             ])
 
+# Generate tickets for an event and save them
+def generateTickets(event):
+    if ticketType is None:
+        ticketType = [
+            {"type": "VIP", "price": 100.0, "quantity": 5},
+            {"type": "General", "price": 50.0, "quantity": 10 },
+        ]
+
+    #Find the next ticket ID
+    nextId = len(tickets) + 1
+
+    for t in ticketType:
+        for i in range(t["quantity"]):
+            ticketId = f"T{nextId}"
+            newTicket = Ticket(ticketId, event.eventId, t["type"], t["price"], available=True)
+            tickets.append(newTicket)
+            nextId += 1
+    
+    # Save all tickets to CSV
+    saveTickets(tickets)
+    print(f"{len(ticketType)} ticket type generated for event {event.event_name}.")
+    
 # List tickets with categorization
 def listTickets():
     if not tickets:

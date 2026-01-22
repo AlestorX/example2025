@@ -1,9 +1,23 @@
 from models.artist import artist_menu
-from models.event import Event
+from models.event import Event, load_event
 from models.customer import customerMenu
-from models.ticket import listTickets
+from models.ticket import tickets, generateTickets, loadTickets, saveTickets
 from models.sale import sales_menu
 from models.artist import load_artists
+
+event = load_event()
+
+tickets = loadTickets()
+
+for e in event:
+    existing = [t for t in tickets if t.eventId == e.eventId]
+    if not existing:
+        generateTickets(e)
+
+saveTickets(tickets)
+
+for t in tickets:
+    t.showInfo()
 
 
 def main():
