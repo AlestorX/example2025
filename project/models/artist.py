@@ -22,18 +22,22 @@ def load_artists():
              Artist("Beyoncé", "Pop"),
              Artist("Miles Davis", "Jazz"),
              Artist("Ludwig van Beethoven", "Classical")
-             ]
+             ] 
+     
      artists = []
      with open (ARTISTS_FILE, "r", newline="", encoding="utf-8") as f:
          reader = csv.reader(f)
          for row in reader:
              if len(row) != 2:
                  continue
+             
              name = row[0].strip()
              genre = row[1].strip()
+
              #Skip empty/bad data 
              if name == "" or genre == "":
-                  artists.append (Artist(name, genre))
+                  continue
+             artists.append(Artist(name, genre))
 
      return artists 
 
@@ -58,7 +62,8 @@ def list_artists(artists):
         # Print a header when genre changes
         if genre_clean !=current_genre:
             current_genre = genre_clean
-        print (f"\n{current_genre.upper()}:")
+            print (f"\n{current_genre.upper()}:")
+        
         print (f"- {a.name}")
 
 
