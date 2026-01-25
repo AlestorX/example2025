@@ -1,7 +1,7 @@
 import os
 import csv
 
-from .artist import Artist, load_artists #we will use artists from artist.py
+from models.artist import Artist, load_artists #we will use artists from artist.py
 
 class Event:
     def __init__(self, eventId, event_name, date, start_time, end_time, artists):
@@ -37,7 +37,7 @@ def find_artist_by_name(artists, name):
     return None
 
 
-def load_event():
+def load_events():
     #If file doesn't exists, return some defualt events
     if not os.path.exists(EVENT_FILE):
         default_artists = load_artists()
