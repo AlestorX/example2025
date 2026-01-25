@@ -1,7 +1,10 @@
+import os
 import csv
 
 
-ticketFile = "tickets.csv"
+BASE_DIR = os.path.dirname(os.path.dirname(__file__)) 
+ticketFile = os.path.join(BASE_DIR, "data", "tickets.csv")
+
 
 
 class Ticket:
