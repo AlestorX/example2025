@@ -21,12 +21,12 @@ class Event:
 
         print("Artists:")
         if len(self.artists) == 0:
-                print("- (No artists found)")
+            print("- (No artists found)")
         else:
-                for a in self.artists:
-                    if a is None:
-                        continue
-                    a.show()
+            for a in self.artists:
+                if a is None:
+                    continue
+                a.show()
 
 EVENT_FILE = "project/data/events.csv"
 
@@ -50,9 +50,9 @@ def load_events():
 
         #Pick some artists for the defualt events
         return [
-    Event("E1", "Summer Pop Night", "2026-02-10", "19:00", "22:00", [beyonce] if beyonce is not None else []),
-    Event("E2", "Jazz Evening", "2026-02-12", "20:00", "23:00", [miles] if miles is not None else []),
-]
+            Event("E1", "Summer Pop Night", "2026-02-10", "19:00", "22:00", [beyonce] if beyonce is not None else []),
+            Event("E2", "Jazz Evening", "2026-02-12", "20:00", "23:00", [miles] if miles is not None else []),
+            ]
 
 
     events = []
@@ -81,7 +81,7 @@ def load_events():
 
             event_artists = []
             if artist_names_text != "":
-                names = artist_names_text.split ("|")
+                names = artist_names_text.split("|")
                 for n in names:
                     n = n.strip()
                     if n == "":

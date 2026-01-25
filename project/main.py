@@ -1,5 +1,5 @@
 from models.artist import artist_menu
-from models.event import Event
+from models.event import event_menu
 from models.customer import customerMenu
 from models.ticket import listTickets
 from models.sale import sales_menu
@@ -32,8 +32,7 @@ def main():
         elif choice =="4":
             sales_menu()   
         elif choice =="5":
-            event1 = Event("Summer Music Festival", "18.05.2026", "18:00", "00:00", artists)
-            event1.show_event()
+            event_menu()
         else:
             print("Invalid choice.")
 
