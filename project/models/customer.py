@@ -26,10 +26,9 @@ def loadCustomers():
         with open(customerFile, newline="") as file:
             reader = csv.reader(file)
             for row in reader:
-                if len(row) != 4:
-                    continue
-                customerId, name, age, email = row
-                customers.append(Customer(name, int(age), email, customerId))
+                if len(row) == 4:
+                    customerId, name, age, email = row
+                    customers.append(Customer(name, int(age), email, customerId))
     except FileNotFoundError:
         print("Customer file not found. Starting with empty data.")
     return customers
@@ -68,22 +67,19 @@ def addCustomer(customers):
 
 # List all customers
 def listCustomer(customers):
-    if len(customers) == 0:
-        print("No customers yet.")
+    if not customers:
+        print("No customers available.")
         return
     
     #sort by name for better readability
-    customersSorted = sorted(customers, key=lambda c: c.name.lower())
-    print("\nCustomers:")
-    for c in customersSorted:
+    customers.sort(key=lambda c: c.name.lower())
+    for c in customers:
         c.showInfo()
         print("-" * 30)
 
 # Show customer purchases from sale file
 def showCustomerPurchases(customerId):
-    print(f"\nPurchases for customer {customerId}:")
     found = False
-
     try:
         with open(saveFile, newline="") as file:
             reader = csv.reader(file)
@@ -105,16 +101,16 @@ def customerMenu():
         print("1. Add New Customer")
         print("2. List Customers")
         print("3. Show Customer Purchases")
-        print("0. Exit")
+        print("0. Back")
 
-        choice = input("Choice (write down number): ").strip()
+        choice = input("Enter choice: ").strip()
 
         if choice == "1":
             addCustomer(customers)
         elif choice == "2":
             listCustomer(customers)
         elif choice == "3":
-            cId = input("Enter Customer ID: ").stipr()
+            cId = input("Enter Customer ID: ").strip()
             showCustomerPurchases(cId)
         elif choice == "0":
             print("Bye!")
