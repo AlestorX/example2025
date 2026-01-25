@@ -110,7 +110,7 @@ def customerMenu():
         elif choice == "2":
             listCustomer(customers)
         elif choice == "3":
-            cId = input("Enter Customer ID: ").stipr()
+            cId = input("Enter Customer ID: ").strip()
             showCustomerPurchases(cId)
         elif choice == "0":
             print("Bye!")
