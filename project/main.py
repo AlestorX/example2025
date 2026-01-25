@@ -28,9 +28,9 @@ def main():
         elif choice =="2":
             customerMenu()
         elif choice =="3":
-            listTickets()
+            sales_menu()
         elif choice =="4":
-            sales_menu()   
+            listTickets()   
         elif choice =="5":
             events = load_events()
 
