@@ -13,20 +13,22 @@ class Event:
         self.artists = artists 
 
     def show_event(self):
-            print("\n=== Event Info ===")
-            print("ID:", self.eventId)
-            print("Event:", self.event_name)
-            print("Date:", self.date)
-            print("Time:", self.start_time, "-", self.end_time)
+        print("\n=== Event Info ===")
+        print("ID:", self.eventId)
+        print("Event:", self.event_name)
+        print("Date:", self.date)
+        print("Time:", self.start_time, "-", self.end_time)
 
-            print("Artists:")
-            if len(self.artists) ==0:
+        print("Artists:")
+        if len(self.artists) == 0:
                 print("- (No artists found)")
-            else:
+        else:
                 for a in self.artists:
+                    if a is None:
+                        continue
                     a.show()
 
-EVENT_FILE = "data/events.csv"
+EVENT_FILE = "project/data/events.csv"
 
 
 def find_artist_by_name(artists, name):
@@ -42,11 +44,16 @@ def load_events():
     if not os.path.exists(EVENT_FILE):
         default_artists = load_artists()
 
+        beyonce = find_artist_by_name(default_artists, "Beyoncé")
+        miles = find_artist_by_name(default_artists, "Miles Davis")
+
+
         #Pick some artists for the defualt events
         return [
-            Event("E1", "Summer Pop Night", "2026-02-10", "19:00", "22:00", [find_artist_by_name(default_artists, "Beyoncé")]),
-            Event("E2", "Jazz Evening", "2026-02-12", "20:00", "23:00", [find_artist_by_name(default_artists, "Miles Davis")]),
-        ]
+    Event("E1", "Summer Pop Night", "2026-02-10", "19:00", "22:00", [beyonce] if beyonce is not None else []),
+    Event("E2", "Jazz Evening", "2026-02-12", "20:00", "23:00", [miles] if miles is not None else []),
+]
+
 
     events = []
     artists = load_artists()  # list of Artist objects (from artists.csv)
