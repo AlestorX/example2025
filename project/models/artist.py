@@ -12,7 +12,9 @@ class Artist:
         print(f"- {self.name} ({self.genre})")
 
 
-ARTISTS_FILE = "project/data/artists.csv"
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # goes to /project
+ARTISTS_FILE = os.path.join(BASE_DIR, "data", "artists.csv")
+
 
 def load_artists():
      # If file doesn't exist, return default artists

@@ -1,5 +1,5 @@
 from models.artist import artist_menu
-from models.event import event_menu
+from models.event import load_events
 from models.customer import customerMenu
 from models.ticket import listTickets
 from models.sale import sales_menu
@@ -32,9 +32,21 @@ def main():
         elif choice =="4":
             sales_menu()   
         elif choice =="5":
-            event_menu()
+            events = load_events()
+
+            if len(events) == 0:
+                print("No events yet.")
+            else:
+                print("\nEvents:")
+                for e in events:
+                    print(f"- [{e.eventId}] {e.event_name} ({e.date} {e.start_time}-{e.end_time})")
+            
+        elif choice == "0":
+                print("Bye.")
+                break
+        
         else:
-            print("Invalid choice.")
+            print("Invalid  choice.")
 
 if __name__=="__main__":
     main()

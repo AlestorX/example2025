@@ -1,10 +1,10 @@
 import csv
 
-from project.models import customer
-from project.models import event
-from project.models import ticket
+from models import customer
+from models import event
+from models import ticket
 
-fileName = "sales.csv"
+fileName = "project/data/sales.csv"
 
 class Sale:
     def __init__(self, salesId: int, event: event, customer:customer, ticket: ticket):

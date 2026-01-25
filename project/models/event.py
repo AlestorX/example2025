@@ -28,7 +28,9 @@ class Event:
                     continue
                 a.show()
 
-EVENT_FILE = "project/data/events.csv"
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # goes to /project
+EVENT_FILE = os.path.join(BASE_DIR, "data", "events.csv")
+
 
 
 def find_artist_by_name(artists, name):
