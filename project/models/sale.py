@@ -80,11 +80,7 @@ def sales_menu():
                 print("No customers. Please add customers first.")
                 continue
             purchasingcustomer = customers[0] 
-            # which artist are they buying from?
-            #display a list of artists
-            #get the user to pick an artists
-            purchasingartist = None 
-            # which event are they buying for?
+
             events = event.load_events()
             if len(events) == 0:
                 print("No events. Please add events first.")
