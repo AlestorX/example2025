@@ -1,10 +1,13 @@
+import os
 import csv
 
 from models import customer
 from models import event
 from models import ticket
 
-fileName = "project/data/sales.csv"
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+fileName = os.path.join(BASE_DIR, "data", "sales.csv")
+
 
 class Sale:
     def __init__(self, salesId: int, event: event, customer:customer, ticket: ticket):
@@ -37,17 +40,22 @@ def make_purchase(Event: event, Customer: customer, Ticket: ticket):
             print("Tickets are sold out for this event.")
             return False
         
-        Ticket.available = False # Mark ticket as sold
+
+        try: 
+            with open(fileName, "r", newline="") as f:
+                new_id = sum(1 for line in f if line.strip()) + 1
+        except FileNotFoundError:
+            new_id = 1
                 
         sale = Sale(
-            salesId = 1,
+            salesId = new_id,
             event = Event,
             customer = Customer,
             ticket = Ticket
         )
 
         sale.purchase = True
-
+     
         sale.save_sale()
         print("Purchase successful!")
         return True
@@ -105,12 +113,13 @@ def sales_menu():
                 continue
 
             purchasingticket = available_tickets[0]
-
-            purchasingticket.available = False
+            purchasingticket.quantity -= 1
             ticket.saveTickets(tickets_list)
 
+
             make_purchase(purchasingevent, purchasingcustomer, purchasingticket)
-        
+            ticket.restockAllIfSoldOut(tickets_list)
+            
         elif choice == "0":
             return
         else:

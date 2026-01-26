@@ -1,6 +1,6 @@
-T1,E1,Standard,25.0,False
-T2,E1,Standard,25.0,False
-T3,E1,VIP,60.0,False
-T4,E2,Standard,20.0,True
-T5,E3,Standard,30.0,True
-T6,E4,Standard,15.0,True
+T1,E1,Standard,25.0,4
+T2,E1,Standard,25.0,5
+T3,E1,VIP,60.0,5
+T4,E2,Standard,20.0,2
+T5,E3,Standard,30.0,4
+T6,E4,Standard,15.0,4

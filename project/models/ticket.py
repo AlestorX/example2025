@@ -8,16 +8,22 @@ ticketFile = os.path.join(BASE_DIR, "data", "tickets.csv")
 
 
 class Ticket:
-    def __init__(self, ticketId, eventId, ticketType, price, available=True):
+    def __init__(self, ticketId, eventId, ticketType, price, quantity):
         self.ticketId = ticketId
         self.eventId = eventId
         self.ticketType = ticketType
         self.price = float(price)
-        self.available = available
+        self.quantity = int(quantity)
+        
+    @property
+    def available(self):        
+        return self.quantity > 0
+
 
     def showInfo(self):
         """Display Ticket details"""
         status = "Available" if self.available else "Sold"
+        print(f"Quantity: {self.quantity}")
         print(f"ID: {self.ticketId}")
         print(f"Event ID: {self.eventId}")
         print(f"Type: {self.ticketType}")
@@ -33,14 +39,15 @@ def loadTickets():
             for row in reader:
                 if len(row) != 5:
                     continue
-                ticketId, eventId, ticketType, price, available = row
+                ticketId, eventId, ticketType, price, quantity = row
+                quantity = int(quantity)
                 tickets.append(
                     Ticket(
                         ticketId,
                         eventId,
                         ticketType,
                         float(price),
-                        available == "True"
+                        quantity
                     )
                 )
     except FileNotFoundError:
@@ -120,8 +127,8 @@ def ticketReport(tickets):
         sold = 0
         available = 0
         for t in ticketList:
-            if t.available:
-                available += 1
+            if t.quantity > 0:
+                available += t.quantity
             else:
                 sold += 1
         print(f"Event {eventId}: Sold = {sold} | Available = {available}")
@@ -132,6 +139,14 @@ def saveTickets(tickets_list):
     with open(ticketFile, "w", newline="") as file:
         writer = csv.writer(file)
         for t in tickets_list:
-            writer.writerow([t.ticketId, t.eventId, t.ticketType, t.price, t.available])
+            writer.writerow([t.ticketId, t.eventId, t.ticketType, t.price, t.quantity])
+RESTOCK_QTY = 5
+
+def restockAllIfSoldOut(tickets_list):
+    # if every ticket quantity is 0 = restock all back to 5
+    if tickets_list and all(t.quantity <= 0 for t in tickets_list):
+        for t in tickets_list:
+            t.quantity = RESTOCK_QTY
+        saveTickets(tickets_list)
 
 
