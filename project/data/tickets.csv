@@ -2,7 +2,11 @@ T1,E1,Standard,25.0,3
 T2,E1.2,Standard,25.0,5
 T3,E1,VIP,60.0,5
 T4,E2,Standard,20.0,2
+<<<<<<< HEAD
 T5,E3,Standard,30.0,2
+=======
+T5,E3,Standard,30.0,3
+>>>>>>> 04b48836a2091bc4f9adecfaab3244e4b5a61907
 T4,E2,Standard,20.0,1
 T5,E3,Standard,30.0,2
 T6,E4,Standard,15.0,1
