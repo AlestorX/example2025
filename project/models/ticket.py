@@ -128,4 +128,10 @@ def ticketReport(tickets):
 
 # Global tickets variable
 tickets = loadTickets()
+def saveTickets(tickets_list):
+    with open(ticketFile, "w", newline="") as file:
+        writer = csv.writer(file)
+        for t in tickets_list:
+            writer.writerow([t.ticketId, t.eventId, t.ticketType, t.price, t.available])
+
 

@@ -105,6 +105,10 @@ def sales_menu():
                 continue
 
             purchasingticket = available_tickets[0]
+
+            purchasingticket.available = False
+            ticket.saveTickets(tickets_list)
+
             make_purchase(purchasingevent, purchasingcustomer, purchasingticket)
         
         elif choice == "0":
