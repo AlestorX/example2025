@@ -14,24 +14,16 @@ def main():
     while True:
         print("\n=== MAIN MENU ===")
     
-        print("1) Artists")
-        print("2) Customers")
-        print("3) Sales")
-        print("4) Ticket")
-        print("5) Events")
+        print("1) Event")
+        print("2) Artists")
+        print("3) Tickets")
+        print("4) customer")
+        print("5) sales")
         print("0) Exit")
 
         choice = input("Choice: ").strip()
 
         if choice =="1":
-            artist_menu()
-        elif choice =="2":
-            customerMenu()
-        elif choice =="3":
-            sales_menu()
-        elif choice =="4":
-            listTickets()   
-        elif choice =="5":
             events = load_events()
 
             if len(events) == 0:
@@ -40,6 +32,14 @@ def main():
                 print("\nEvents:")
                 for e in events:
                     print(f"- [{e.eventId}] {e.event_name} ({e.date} {e.start_time}-{e.end_time})")
+        elif choice =="2":
+            artist_menu()
+        elif choice =="3":
+            listTickets()
+        elif choice =="4":
+            customerMenu()   
+        elif choice =="5":
+            sales_menu()
             
         elif choice == "0":
                 print("Bye.")
