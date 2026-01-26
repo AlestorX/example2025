@@ -67,7 +67,7 @@ def sales_menu():
         if choice == "1":
             print("Purchasing in progress...")
             # which customer is buying?
-            customers = customer.load_customers()
+            customers = customer.loadCustomers()
             if len(customers) == 0:
                 print("No customers. Please add customers first.")
                 continue
@@ -82,31 +82,32 @@ def sales_menu():
                 print("No events. Please add events first.")
                 continue
 
-            for event in events:
-                event.show_event()
+            for ev in events:
+                ev.show_event()
 
             selectedEvent = input("Select event by ID: ").strip()
             # get the usersto pick an event
             #save the selected event into purchasingevent variable
             purchasingevent = None
-            # which ticket are they buying?
-            ticket.loadTickets()
-            if len(ticket.tickets) == 0:
-                print("No tickets.")
-                continue
-            purchasingticket = None
-            i = 0
-            while i < len(ticket.tickets):
-                if ticket.tickets[i].available:
-                    purchasingticket = ticket.tickets[i]
+            for e in events:
+                if e.eventId.strip() == selectedEvent:
+                    purchasingevent = e
                     break
-                i += 1
-            if purchasingticket is None:
-                print("No available tickets.")
+            if purchasingevent is None:
+                print("Invalid event ID.")
                 continue
 
+            # which ticket are they buying?
+            tickets_list = ticket.loadTickets()
+            available_tickets = ticket.getAvailableTickets(purchasingevent.eventId, tickets_list)
+            if len(available_tickets) == 0:    
+                print("No available tickets for this event.")
+                continue
+
+            purchasingticket = available_tickets[0]
             make_purchase(purchasingevent, purchasingcustomer, purchasingticket)
+        
         elif choice == "0":
             return
         else:
-            print("Invalid choice.")
+            print("Invalid choice.")    
