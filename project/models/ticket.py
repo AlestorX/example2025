@@ -106,7 +106,7 @@ def listTickets():
     # Display tickets grouped by event
     for eventId in sorted(ticketByEvent.keys()):
         print(f"\n=== Tickets for Event ID: {eventId} ===")
-        for t in sorted(ticketByEvent[eventId], key=lambda x: x.ticketType.low()):
+        for t in sorted(ticketByEvent[eventId], key=lambda x: x.ticketType.lower()):
             t.showInfo()
         print("-" * 30)
 
