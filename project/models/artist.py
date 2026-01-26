@@ -1,4 +1,4 @@
-from models.person import Person
+
 
 import os
 import csv
@@ -12,7 +12,9 @@ class Artist:
         print(f"- {self.name} ({self.genre})")
 
 
-ARTISTS_FILE = "data/artists.csv"
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # goes to /project
+ARTISTS_FILE = os.path.join(BASE_DIR, "data", "artists.csv")
+
 
 def load_artists():
      # If file doesn't exist, return default artists
@@ -22,18 +24,22 @@ def load_artists():
              Artist("Beyoncé", "Pop"),
              Artist("Miles Davis", "Jazz"),
              Artist("Ludwig van Beethoven", "Classical")
-             ]
+             ] 
+     
      artists = []
      with open (ARTISTS_FILE, "r", newline="", encoding="utf-8") as f:
          reader = csv.reader(f)
          for row in reader:
              if len(row) != 2:
                  continue
+             
              name = row[0].strip()
              genre = row[1].strip()
+
              #Skip empty/bad data 
              if name == "" or genre == "":
-                  artists.append (Artist(name, genre))
+                  continue
+             artists.append(Artist(name, genre))
 
      return artists 
 
@@ -47,7 +53,7 @@ def list_artists(artists):
     # Sort by genre first, then name
     artists_sorted = sorted(artists, key=lambda a: (a.genre.strip().lower(), a.name.strip().lower()))
 
-    print("\nArtists (grouped by genre )")
+    print("\nArtists ")
     
     current_genre = None
     for a in artists_sorted:
@@ -58,8 +64,11 @@ def list_artists(artists):
         # Print a header when genre changes
         if genre_clean !=current_genre:
             current_genre = genre_clean
-        print (f"\n{current_genre.upper()}:")
-        print (f"- {a.name}")
+            print (f"\n{current_genre.upper()}:")
+        
+        print (f"- {name_clean}")
+
+    print()
 
 
 def artist_menu():
@@ -70,7 +79,7 @@ def artist_menu():
         print("1) List artists")
         print("0) Back")
 
-        choice = input("Choice ").strip()
+        choice = input("Choice: ").strip()
 
         if choice == "1":
             list_artists(artists) 
@@ -82,4 +91,6 @@ def artist_menu():
 
 
 
+if __name__ == "__main__":
+    artist_menu()
 
